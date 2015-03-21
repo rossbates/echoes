@@ -31,8 +31,7 @@ class EchoAPI:
 		):
 			self.logged_in = True
 		else:
-			print 'no'
-			#self.login()
+			self.login()
 
 	def login(self):
 		login_page=self.get('')
