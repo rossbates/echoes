@@ -24,7 +24,6 @@ class EchoAPI:
 		self.email = email
 		self.password = password
 
-
 		# test a standard request using cookie
 		if (
 			os.path.isfile(self.cookie_file) and
@@ -35,7 +34,7 @@ class EchoAPI:
 			self.login()
 
 	def login(self):
-		login_page=self.get('')
+		login_page = self.get('')
 		soup = BeautifulSoup(login_page.content)
 		login_url = soup.find('form', id='ap_signin_form').get('action')
 		hidden_elements = [
@@ -84,11 +83,11 @@ class EchoAPI:
 
 	def cards(self, limit=1):
 		params = {'limit': limit}
-		cards = self.get('/api/cards',params)
+		cards = self.get('/api/cards', params)
 		return json.loads(cards.text)['cards']
 
 	def todos(self, task_type, limit):
-		params = {'type': task_type, 'size':limit}
+		params = {'type': task_type, 'size': limit}
 		tasks = self.get('/api/todos', params)
 		return json.loads(tasks.text)['values']
 
@@ -106,6 +105,7 @@ def get_headers():
 		'Referer': 'http://echo.amazon.com/spa/index.html'
 	}
 	return headers
+
 
 
 
