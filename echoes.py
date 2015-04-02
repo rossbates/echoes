@@ -77,9 +77,11 @@ class EchoAPI:
 		device = self.get('/api/devices/device')
 
 		if device.status_code == 200:
-			return True
-		else:
-			return False
+			try:
+				json.loads(device.text)  # if valid json all is good
+				return True
+			except ValueError:
+				return False
 
 	def cards(self, limit=1):
 		params = {'limit': limit}
