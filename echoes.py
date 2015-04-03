@@ -7,8 +7,8 @@ This module contains the primary objects which power echoes
 import json
 import pickle
 import os.path
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 
 class EchoAPI:
